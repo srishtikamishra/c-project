@@ -1,0 +1,47 @@
+printf("Welcome to the ATM!\n");
+printf("Please enter your PIN: ");
+scanf("%d", &enteredPin);
+
+if (enteredPin == pin) {
+    do {
+        printf("\nATM Menu:\n");
+        printf("1. Check Balance\n");
+        printf("2. Deposit Money\n");
+        printf("3. Withdraw Money\n");
+        printf("4. Exit\n");
+        printf("Choose an option: ");
+        scanf("%d", &option);
+
+        switch (option) {
+            case 1:
+                printf("Your balance is: $%.2f\n", balance);
+                break;
+            case 2:
+                printf("Enter the amount to deposit: ");
+                scanf("%f", &deposit);
+                balance += deposit;
+                printf("Your new balance is: $%.2f\n", balance);
+                break;
+            case 3:
+                printf("Enter the amount to withdraw: ");
+                scanf("%f", &withdraw);
+                if (withdraw <= balance) {
+                    balance -= withdraw;
+                    printf("Please collect your cash.\n");
+                    printf("Your new balance is: $%.2f\n", balance);
+                } else {
+                    printf("Insufficient balance!\n");
+                }
+                break;
+            case 4:
+                printf("Thank you for using the ATM. Goodbye!\n");
+                break;
+            default:
+                printf("Invalid option. Please try again.\n");
+        }
+    } while (option != 4);
+} else {
+    printf("Incorrect PIN. Please try again.\n");
+}
+
+return 0;
